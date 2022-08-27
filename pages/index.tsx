@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-
+import Link from "next/link"; //追記
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -15,7 +15,9 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-
+        <Link href="/about">
+          <a>this page!</a>
+        </Link>
         <p className={styles.description}>
           Get started by editing{" "}
           <code className={styles.code}>pages/index.tsx</code>
