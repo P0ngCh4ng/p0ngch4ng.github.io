@@ -5,17 +5,10 @@ const Home = ({ allPostsData }: { allPostsData: posts[] }) => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>今日の学び</h1>
         <Link href="/about">
-          <a>this page!</a>
+          <a style={{ color: "blue" }}>自分について</a>
         </Link>
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
         <ul>
           {allPostsData.map(({ id, title }) => (
             <li key={id}>
@@ -26,16 +19,7 @@ const Home = ({ allPostsData }: { allPostsData: posts[] }) => {
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+        <a>Powered by P0ngCh4ng</a>
       </footer>
     </div>
   );
