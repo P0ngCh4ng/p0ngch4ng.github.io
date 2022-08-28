@@ -5,15 +5,11 @@ import markdown from "remark-parse";
 import { unified } from "unified";
 import html from "remark-html";
 const postsDirectory = path.join(process.cwd(), "posts");
-type posts = {
-  date: Date;
-  id: String;
-  title: String;
-};
+
 export function getSortedPostsData() {
   // /posts　配下のファイル名を取得する
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData: [posts] = fileNames.map((fileName) => {
+  const allPostsData = fileNames.map((fileName) => {
     // id を取得するためにファイル名から ".md" を削除する
     const id = fileName.replace(/\.md$/, "");
 
@@ -31,7 +27,7 @@ export function getSortedPostsData() {
     };
   });
   // 投稿を日付でソートする
-  return allPostsData.sort((a: posts, b: posts) => {
+  return allPostsData.sort((a: any, b: any) => {
     if (a.date < b.date) {
       return 1;
     } else {
@@ -63,13 +59,13 @@ export function getAllPostIds() {
     };
   });
 }
-export async function getPostData(id) {
+export async function getPostData(id: string) {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
 
   // 投稿のメタデータ部分を解析するために gray-matter を使う
   const matterResult = matter(fileContents);
-
+  console.log(matterResult);
   // マークダウンを HTML 文字列に変換するために remark を使う
   const processedContent = await unified()
     .use(html)
