@@ -1,6 +1,6 @@
 type posts = {
-  date: Date;
-  id: String;
-  title: String;
-  contentHtml: String;
+  date: string;
+  id: string;
+  title: string;
+  contentHtml: string;
 };

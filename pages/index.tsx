@@ -1,7 +1,7 @@
 import styles from "../styles/Home.module.css";
 import Link from "next/link"; //追記
 import { getSortedPostsData } from "../lib/posts";
-const Home = ({ allPostsData }) => {
+const Home = ({ allPostsData }: { allPostsData: posts[] }) => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>

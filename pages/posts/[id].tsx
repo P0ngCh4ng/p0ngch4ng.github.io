@@ -1,6 +1,6 @@
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import Layout from "../../components/layout";
-export default function Post({ postData }) {
+export default function Post({ postData }: { postData: posts }) {
   return (
     <Layout>
       {postData.title}
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: any }) {
   const postData = await getPostData(params.id);
   return {
     props: {
