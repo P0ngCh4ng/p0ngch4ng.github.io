@@ -1,16 +1,23 @@
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import Layout from "../../components/layout";
-export default function Post({ postData }: { postData: posts }) {
-  return (
-    <Layout>
-      {postData.title}
-      <br />
-      {postData.date}
-      <br />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-    </Layout>
-  );
+import { NextPage } from "next";
+import Head from "next/head";
+interface PostProps {
+  postData: post;
 }
+const Post: NextPage<PostProps> = ({ postData }) => (
+  <Layout>
+    <Head>
+      <title>{postData.title}</title>
+    </Head>
+
+    {postData.date}
+    <br />
+    <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+  </Layout>
+);
+
+export default Post;
 export async function getStaticPaths() {
   const paths = getAllPostIds();
   return {
@@ -18,7 +25,7 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-export async function getStaticProps({ params }: { params: posts }) {
+export async function getStaticProps({ params }: { params: post }) {
   const postData = await getPostData(params.id);
   return {
     props: {

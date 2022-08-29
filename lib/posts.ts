@@ -4,12 +4,14 @@ import matter from "gray-matter";
 import markdown from "remark-parse";
 import { unified } from "unified";
 import html from "remark-html";
+
 const postsDirectory = path.join(process.cwd(), "posts");
 
 export function getSortedPostsData() {
   // /posts　配下のファイル名を取得する
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
+  let allPostsData = fileNames.map((fileName) => {
+    if (fileName == "about.md") return;
     // id を取得するためにファイル名から ".md" を削除する
     const id = fileName.replace(/\.md$/, "");
 
@@ -19,13 +21,13 @@ export function getSortedPostsData() {
 
     // 投稿のメタデータ部分を解析するために gray-matter を使う
     const matterResult = matter(fileContents);
-
     // データを id と合わせる
     return {
       id,
       ...matterResult.data,
     };
   });
+  allPostsData = allPostsData.filter(Boolean);
   // 投稿を日付でソートする
   return allPostsData.sort((a: any, b: any) => {
     if (a.date < b.date) {
