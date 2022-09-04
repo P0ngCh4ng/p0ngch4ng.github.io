@@ -27,6 +27,7 @@ const Home: NextPage<HomeProps> = ({ allPostsData }) => (
 
     <footer className={styles.footer}>
       <a>Powered by P0ngCh4ng</a>
+      <a> 感想や間違いはこちらまで p0ngch4ng@gmail.com</a>
     </footer>
   </div>
 );
