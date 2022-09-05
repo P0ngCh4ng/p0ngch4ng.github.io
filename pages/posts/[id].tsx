@@ -10,7 +10,8 @@ const Post: NextPage<PostProps> = ({ postData }) => (
     <Head>
       <title>{postData.title}</title>
     </Head>
-
+    {postData.title}
+    <br />
     {postData.date}
     <br />
     <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
