@@ -36,3 +36,20 @@ main = do
 ```
 
 ## 問題２
+shuffle関数を自作すること
+
+```
+shuffle :: [a] -> IO [a]
+shuffle [] = return []
+shuffle xs = do
+   n <-  randomRIO (0, length xs - 1) :: IO Int
+   xs' <- shuffle $ take n xs ++ drop (n + 1) xs
+   return $ (xs !! n) : xs'
+```
+
+リスト操作にIOを組み込んだ形。
+次の呼び出しには take n xs ++ drop (n + 1 ) xs を与える。
+これは、リストの中からランダムな値を一つ取り除いたリストである（!!と逆の処理）。
+そして、その返り値をxs'に代入している。
+
+また、この関数が返すのは、リストから任意の値を取り出し、
