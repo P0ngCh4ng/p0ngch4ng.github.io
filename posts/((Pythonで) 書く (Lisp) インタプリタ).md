@@ -1,6 +1,6 @@
 ---
-title: ((Pythonで) 書く (Lisp) インタプリタ)　を読んで
-date: 2022-11-15
+title: '((Pythonで) 書く (Lisp) インタプリタ)　を読んで'
+date: '2022-11-15'
 ---
 http://www.aoky.net/articles/peter_norvig/lispy.htm より
 記事のまとめ...というより写経。
