@@ -24,5 +24,8 @@
     "eslint-config-next": "12.2.5",
     "serve": "^14.0.1",
     "typescript": "4.8.2"
+  },
+  "volta": {
+    "node": "14.21.1"
   }
 }
