@@ -1,6 +1,7 @@
 ---
 title: "Haskell練習3"
 date: "2022-11-19"
+tag: "programming"
 ---
  ## 問題4
  ボゴソートを作成

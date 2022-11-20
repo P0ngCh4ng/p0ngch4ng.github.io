@@ -1,6 +1,6 @@
 ---
 title: "ReactのTypeScriptを用いた関数コンポーネントの簡単なまとめ"
-data: "2022-9-12"
+date: "2022-9-12"
 tag: "programming"
 ---
 

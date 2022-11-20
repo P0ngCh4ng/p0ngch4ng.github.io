@@ -30,7 +30,8 @@ export function getSortedPostsData() {
   allPostsData = allPostsData.filter(Boolean);
   // 投稿を日付でソートする
   return allPostsData.sort((a: any, b: any) => {
-    if (a.date < b.date) {
+    if (new Date(a.date) <new Date(b.date)) {
+      console.log(a.date,b.date);
       return 1;
     } else {
       return -1;

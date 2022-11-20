@@ -1,6 +1,7 @@
 ---
 title: "祝、アルファ版リリース"
 date : "2022-9-26"
+tag: "pressreleace"
 ---
 ## アプリのアルファ版をリリース
 Flip stickiesのアルファ版のリリースに成功した。

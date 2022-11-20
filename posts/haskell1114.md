@@ -1,6 +1,7 @@
 ---
 title: "Haskell練習2"
 date: "2022-10-3"
+tag: "programming"
 ---
 ## 問題１
 

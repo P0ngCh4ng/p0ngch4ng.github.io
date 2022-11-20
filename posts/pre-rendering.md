@@ -2,6 +2,7 @@
 title: "初めに"
 date: "2022-8-29"
 status: "required"
+tag: "other"
 ---
 
 このサイトは、僕が適当に勉強して、適当に output するためのサイトです。
