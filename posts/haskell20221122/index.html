@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><title>haskell練習5</title><meta name="next-head-count" content="3"/><link rel="preload" href="/_next/static/css/b19239382bd9f6e7.css" as="style"/><link rel="stylesheet" href="/_next/static/css/b19239382bd9f6e7.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/_next/static/chunks/webpack-7ee66019f7f6d30f.js" defer=""></script><script src="/_next/static/chunks/framework-db825bd0b4ae01ef.js" defer=""></script><script src="/_next/static/chunks/main-424107595f363128.js" defer=""></script><script src="/_next/static/chunks/pages/_app-deb173bd80cbaa92.js" defer=""></script><script src="/_next/static/chunks/pages/posts/%5Bid%5D-802f20735a68ccca.js" defer=""></script><script src="/_next/static/fqNlTBpOVrjgOz1zPol0N/_buildManifest.js" defer=""></script><script src="/_next/static/fqNlTBpOVrjgOz1zPol0N/_ssgManifest.js" defer=""></script></head><body><div id="__next"><div>haskell練習5<br/>2022-11-22<br/><div><h2>問題6</h2>
+<p>次に示す関数をラムダ式に置き換える</p>
+<pre><code>fact n | n > 0 = n * fact (n - 1)
+
+main = do
+    print $ fact 5
+	```
+	
+	回答
+	```
+	fact = \n -> case n ofM\
+	0 -> 1
+	_ | n > 0 -> n * fact (n - 1)
+
+main = do
+    print $ fact 5
+	```
+
+
+## 問題７
+次に示す関数addをラムダ式で書き換えてください。
+
+</code></pre>
+<p>add :: Int -> Int -> Int
+add x y = x + y</p>
+<p>main = do
+print $ add 2 3</p>
+<pre><code>回答
+</code></pre>
+<p>add :: Int -> Int -> Int
+add = \x -> \y -> x + y</p>
+<pre><code>
+
+
+## 問題８
+次に示す関数addを定義せずに、呼び出し側で無名関数にインライン展開してください。
+</code></pre>
+<p>add x y = x + y</p>
+<p>main = do
+print $ add 2 3
+```</p>
+<p>回答</p>
+<pre><code>print $ ( \x -> \y -> x + y) 2 3
+</code></pre>
+</div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"haskell20221122","contentHtml":"\u003ch2\u003e問題6\u003c/h2\u003e\n\u003cp\u003e次に示す関数をラムダ式に置き換える\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003efact n | n \u003e 0 = n * fact (n - 1)\n\nmain = do\n    print $ fact 5\n\t```\n\t\n\t回答\n\t```\n\tfact = \\n -\u003e case n ofM\\\n\t0 -\u003e 1\n\t_ | n \u003e 0 -\u003e n * fact (n - 1)\n\nmain = do\n    print $ fact 5\n\t```\n\n\n## 問題７\n次に示す関数addをラムダ式で書き換えてください。\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eadd :: Int -\u003e Int -\u003e Int\nadd x y = x + y\u003c/p\u003e\n\u003cp\u003emain = do\nprint $ add 2 3\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e回答\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eadd :: Int -\u003e Int -\u003e Int\nadd = \\x -\u003e \\y -\u003e x + y\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e\n\n\n## 問題８\n次に示す関数addを定義せずに、呼び出し側で無名関数にインライン展開してください。\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eadd x y = x + y\u003c/p\u003e\n\u003cp\u003emain = do\nprint $ add 2 3\n```\u003c/p\u003e\n\u003cp\u003e回答\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eprint $ ( \\x -\u003e \\y -\u003e x + y) 2 3\n\u003c/code\u003e\u003c/pre\u003e\n","title":"haskell練習5","date":"2022-11-22"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"haskell20221122"},"buildId":"fqNlTBpOVrjgOz1zPol0N","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
