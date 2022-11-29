@@ -102,7 +102,7 @@ def eval(x, env=global_env):
     elif x[0] == 'define':         # (define var exp)
         (_, var, exp) = x
         env[var] = eval(exp, env)
-    elif x[0] == 'lambda':         # (lambda (var*) exp)
+		elif x[0] == 'lambda':         # (lambda (var*) exp)
         (_, vars, exp) = x
         return lambda *args: eval(exp, Env(vars, args, env))
     elif x[0] == 'begin':          # (begin exp*)
@@ -120,4 +120,31 @@ Symbol = str
 ```	
 リスト3 構文実行のプログラム
 
+構文解析によって処理されたプログラムは、ここで解釈される。
+	すでにトークンから変数へと処理されているため、関数であれば関数が呼び出され、
+	変数はenvから呼び出される。
+	また、要素が一つでない場合は再帰的に処理される。
+	
+	それぞれの関数の意味は元記事にリストがあるため説明は割愛する。
+	
+	ここで、envについて説明を行う。
+	
+	```
+	class Env(dict):
+    "環境: ペア{'var':val}のdictで、外部環境(outer)を持つ。"
+    def __init__(self, parms=(), args=(), outer=None):
+        self.update(zip(parms,args))
+        self.outer = outer
+    def find(self, var):
+        "var が現れる一番内側のEnvを見つける。"
+        return self if var in self else self.outer.find(var)
+	```
+	
+	envクラスは、Pythonの辞書を使って定義されたクラスで、辞書のメソッドはそのまま用いることができる。
+	
+	
+	ここで辞書を使わずにクラスを定義しているのは理由がある。
+	
+	環境は通常クロージャごとに状態が変わるため、今の環境に値がない場合は、一つ外側の環境にアクセスする必要がある。
+	findメソッドはそのために定義されたものである。
 	
