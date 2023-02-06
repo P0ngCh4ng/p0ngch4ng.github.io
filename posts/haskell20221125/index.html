@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><title>haskell練習6</title><meta name="next-head-count" content="3"/><link rel="preload" href="/_next/static/css/b19239382bd9f6e7.css" as="style"/><link rel="stylesheet" href="/_next/static/css/b19239382bd9f6e7.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/_next/static/chunks/webpack-7ee66019f7f6d30f.js" defer=""></script><script src="/_next/static/chunks/framework-db825bd0b4ae01ef.js" defer=""></script><script src="/_next/static/chunks/main-424107595f363128.js" defer=""></script><script src="/_next/static/chunks/pages/_app-deb173bd80cbaa92.js" defer=""></script><script src="/_next/static/chunks/pages/posts/%5Bid%5D-802f20735a68ccca.js" defer=""></script><script src="/_next/static/6psNSYDXPa_NtmbTZ86q2/_buildManifest.js" defer=""></script><script src="/_next/static/6psNSYDXPa_NtmbTZ86q2/_ssgManifest.js" defer=""></script></head><body><div id="__next"><div>haskell練習6<br/>2022-11-25<br/><div><h2>【問4】次に示す関数fとaddを定義せずに、呼び出し側で無名関数にインライン展開してください。</h2>
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><title>haskell練習6</title><meta name="next-head-count" content="3"/><link rel="preload" href="/_next/static/css/b19239382bd9f6e7.css" as="style"/><link rel="stylesheet" href="/_next/static/css/b19239382bd9f6e7.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/_next/static/chunks/webpack-7ee66019f7f6d30f.js" defer=""></script><script src="/_next/static/chunks/framework-db825bd0b4ae01ef.js" defer=""></script><script src="/_next/static/chunks/main-424107595f363128.js" defer=""></script><script src="/_next/static/chunks/pages/_app-deb173bd80cbaa92.js" defer=""></script><script src="/_next/static/chunks/pages/posts/%5Bid%5D-802f20735a68ccca.js" defer=""></script><script src="/_next/static/3s-h4rM483EX3hBeJQoQE/_buildManifest.js" defer=""></script><script src="/_next/static/3s-h4rM483EX3hBeJQoQE/_ssgManifest.js" defer=""></script></head><body><div id="__next"><div>haskell練習6<br/>2022-11-25<br/><div><h2>【問4】次に示す関数fとaddを定義せずに、呼び出し側で無名関数にインライン展開してください。</h2>
 <h2>【問5】次に示す関数addを定義せずに、呼び出し側で無名関数にインライン展開してください。</h2>
 <pre><code>f g = g 1 2
 add x y = x + y
@@ -9,4 +9,40 @@ add x y = x + y
     print $ (\x -> \y -> x + y) 1 2
 
 </code></pre>
-</div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"haskell20221125","contentHtml":"\u003ch2\u003e【問4】次に示す関数fとaddを定義せずに、呼び出し側で無名関数にインライン展開してください。\u003c/h2\u003e\n\u003ch2\u003e【問5】次に示す関数addを定義せずに、呼び出し側で無名関数にインライン展開してください。\u003c/h2\u003e\n\u003cpre\u003e\u003ccode\u003ef g = g 1 2\nadd x y = x + y\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e解答\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003emain = do\n    print $ (\\g -\u003e g 1 2) (\\x -\u003e \\y -\u003e x + y)\n    print $ (\\x -\u003e \\y -\u003e x + y) 1 2\n\n\u003c/code\u003e\u003c/pre\u003e\n","title":"haskell練習6","date":"2022-11-25"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"haskell20221125"},"buildId":"6psNSYDXPa_NtmbTZ86q2","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
+<h2>【問6】次に示す関数combineを、引数1つずつに分割してネストさせたラムダ式で書き換えてください。</h2>
+<h2>【問7】次のコードから関数doubleを除去してください。ラムダ式は使わないでください。</h2>
+<pre><code>combine a b c = a:b:[c]
+
+main = do
+    let a = combine 1
+        b = a 2
+        c = b 3
+    print c
+    print $ combine 'a' 'b' 'c'
+    
+   
+f xs g = [g x | x &#x3C;- xs]
+double x = 2 * x
+
+main = do
+    print $ f [1..5] double
+</code></pre>
+<p>解答</p>
+<pre><code>combinea = (\a -> \b -> \c -> a:b:[c])
+print $ f [1..5] $ (*) 2
+</code></pre>
+<h2>【問8】次のコードからラムダ式を排除してください。</h2>
+<pre><code>f1 g = g 1
+f2 g = g 2 3
+
+main = do
+    print $ f1 $ \x -> x - 3
+    print $ f1 $ \x -> 3 - x
+    print $ f2 $ \x y -> x + y
+</code></pre>
+<p>解答</p>
+<pre><code>    print $ f1 $ (+(-3))
+    print $ f1 $ (3 -)
+    print $ f2 $ (+)
+</code></pre>
+</div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"haskell20221125","contentHtml":"\u003ch2\u003e【問4】次に示す関数fとaddを定義せずに、呼び出し側で無名関数にインライン展開してください。\u003c/h2\u003e\n\u003ch2\u003e【問5】次に示す関数addを定義せずに、呼び出し側で無名関数にインライン展開してください。\u003c/h2\u003e\n\u003cpre\u003e\u003ccode\u003ef g = g 1 2\nadd x y = x + y\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e解答\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003emain = do\n    print $ (\\g -\u003e g 1 2) (\\x -\u003e \\y -\u003e x + y)\n    print $ (\\x -\u003e \\y -\u003e x + y) 1 2\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2\u003e【問6】次に示す関数combineを、引数1つずつに分割してネストさせたラムダ式で書き換えてください。\u003c/h2\u003e\n\u003ch2\u003e【問7】次のコードから関数doubleを除去してください。ラムダ式は使わないでください。\u003c/h2\u003e\n\u003cpre\u003e\u003ccode\u003ecombine a b c = a:b:[c]\n\nmain = do\n    let a = combine 1\n        b = a 2\n        c = b 3\n    print c\n    print $ combine 'a' 'b' 'c'\n    \n   \nf xs g = [g x | x \u0026#x3C;- xs]\ndouble x = 2 * x\n\nmain = do\n    print $ f [1..5] double\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e解答\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecombinea = (\\a -\u003e \\b -\u003e \\c -\u003e a:b:[c])\nprint $ f [1..5] $ (*) 2\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2\u003e【問8】次のコードからラムダ式を排除してください。\u003c/h2\u003e\n\u003cpre\u003e\u003ccode\u003ef1 g = g 1\nf2 g = g 2 3\n\nmain = do\n    print $ f1 $ \\x -\u003e x - 3\n    print $ f1 $ \\x -\u003e 3 - x\n    print $ f2 $ \\x y -\u003e x + y\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e解答\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e    print $ f1 $ (+(-3))\n    print $ f1 $ (3 -)\n    print $ f2 $ (+)\n\u003c/code\u003e\u003c/pre\u003e\n","title":"haskell練習6","date":"2022-11-25"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"haskell20221125"},"buildId":"3s-h4rM483EX3hBeJQoQE","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
