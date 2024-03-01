@@ -13,9 +13,10 @@ const Home: NextPage<HomeProps> = ({ allPostsData }) => (
     </Head>
     <main className={styles.main}>
       <h1 className={styles.title}>今日の学び</h1>
-      <Link href="/posts/about">
-        <a style={{ color: "blue" }}>自分について</a>
-      </Link>
+      {/*   <Link href="/posts/about">
+         <a style={{ color: "blue" }}>自分について</a>
+      </Link>    */}
+      <a>いいかげんメモとブログの境目が曖昧になってきたので作り直し予定...</a>
       <ul>
         {allPostsData.map(({ id, title }) => (
           <li key={id}>
